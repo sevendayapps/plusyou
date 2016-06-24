@@ -1,0 +1,27 @@
+Hướng dẫn thêm gói jar vào thư mục .m2 trên máy để import vào project khác 
+Gói jar ví dụ là gói microl-core.jar từ Microl Core Functionality Project 
+===============================================================================
+Step 1 : Lấy file Jar 
+	- Build project microl-core bằng Maven 
+	- Vào thư mục target lấy gói jar
+
+Step 2 : Chạy đăng ký cài đặt gói Jar vào thư mục maven local repository
+	- Mở Terminal trên Linux/Mac hoặc Command Line trên Windows
+	- Chạy lệnh bên dưới (nhớ thay đổi đường dẫn)
+		mvn install:install-file -Dfile={đường dẫn đến file} -DgroupId=com.microl -DartifactId=microl-core -Dversion={số version} -Dpackaging=jar
+	- Sau khi chạy xong thì gói jar từ đường dẫn sẽ được đăng ký vào maven local repository. Mọi người mở thư mục .m2/repository/com/microl/microl-core ra là thấy 
+	
+Step 3 : Import vào project khác
+	- Mở project khác ra 
+	- Vào file pom.xml 
+	- Vào phần dependencies rồi thêm mới 1 dependency như sau
+		<dependency>
+			<groupId>com.microl</groupId>
+			<artifactId>microl-core</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	- Update maven 
+
+Step 4 : Chờ dependency nhảy vào classpath là xong. 
+
+THANKS FOR WATCHING. VietLK
